@@ -1,0 +1,81 @@
+{
+{
+  "paths": [
+    {
+      "/hello": {
+        "get": {
+          "operationId": "hello",
+          "summary": "Returns a greeting message",
+          "description": "Endpoint that returns a hello world message.",
+          "x-curl": "curl -X GET http://localhost/hello",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "hello world"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+},
+{
+  "paths": [
+    {
+      "/echo": {
+        "post": {
+          "operationId": "echo",
+          "description": "Echoes back the received JSON payload.",
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful echo response.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "echo": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "example": {
+                    "echo": {
+                      "key": "value"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x-example-curl": "curl -X POST http://localhost:5000/echo -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}'"
+        }
+      }
+    }
+  ]
+}
+}

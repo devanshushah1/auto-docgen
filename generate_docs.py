@@ -96,7 +96,7 @@ with open("docs/openapi.json", "w") as out:
         # validated_output = OpenAPISpec.model_validate(parsed_json)
         
         # Append the valid output
-        out.write(f'  "{e["path"]}": {json.dumps(validated_output.dict(), indent=2)}')
+        out.write(docs)
         if idx < len(endpoints) - 1:
             out.write(",\n")  # Avoid trailing comma for the last item
     out.write("\n}\n")  # Close the JSON object
